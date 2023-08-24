@@ -2,6 +2,7 @@ import { User } from '../model/userModel.js';
 import sendToken from "../utils/jwtToken.js";
 import ErrorHandler from '../utils/errorHandler.js';
 import { comparePassword } from '../utils/comparePassword.js';
+import axios from 'axios';
 
 
 export const registerUser = async (req, res, next) => {
@@ -88,3 +89,19 @@ export const getUserInfo = async (req, res, next) => {
         
     }
 }
+
+export const gitrepoFetech = async (req,res,next)=>{
+   
+    const {username} = req.body;
+        try {
+          const response = await axios.get(
+            `https://api.github.com/users/${username}/repos`,
+            
+          );
+          res.json(response.data);
+        } catch (error) {
+          return next(new ErrorHandler(error,401))
+        }
+      
+}
+
