@@ -34,10 +34,21 @@ app.use(
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     cookie: {
-      secure:false
+      secure:true,
+        sameSite:"none",
+        httpOnly:true
     }
   })
 );
+app.use(
+  cors({
+    credentials: true,
+    origin:'*',  //je bdlna frontend url se
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
+app.enable("trust proxy");
 
 app.use(passport.initialize());
 app.use(passport.session());
