@@ -8,6 +8,6 @@ router.post("/signup", registerUser);
 router.post("/login", loginUser)
 router.get("/logout",logout)
 router.get("/me",isAuthenticatedUser,getUserInfo)
-router.get("/gitrepo",isAuthenticatedUser,gitrepoFetech)
+router.get("/gitrepo",gitrepoFetech)
 
 export default router
