@@ -6,7 +6,10 @@ import ErrorHandler from "../utils/errorHandler.js";
      try {
         
          const { id } = req.body;
-         console.log(id);
+          const userTypeFind = await UserType.findOne({ userId: id })
+         if (userTypeFind) {
+             return;
+         }
         const userType = await UserType.create({
             userId:id
         })
