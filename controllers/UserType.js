@@ -90,4 +90,27 @@ export const updateUserTypeHosting = async(req,res,next) => {
     }
 }
 
+export const updateUserTypeDeploy = async(req,res,next) => {
+    try {
+        const { id, deployOption } = req.body;
+        
+        const updateUserType = await UserType.findOneAndUpdate({ userId: id }, {
+            $set: {
+             
+                deploy:deployOption 
+            }
+        },
+            {
+                new:true,      
+            })
+    
+        res.status(200).json({
+            message: "sucessfully updated",
+            updateUserType
+        })
+
+    } catch (error) {
+        return next(new ErrorHandler(error,401))
+    }
+}
 
