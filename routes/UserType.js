@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/register", isAuthenticatedUser, registerUserType)
 router.put("/update", isAuthenticatedUser, updateUserType)
-router.get("/getUserType",getUserType)
+router.post("/getUserType",getUserType)
 
 
 
