@@ -7,24 +7,14 @@ const Schema = mongoose.Schema({
   },
   userType: {
     type: String,
-    enum: ["Developer", "Orgnization", "Company"],
-    default: "Developer",
+    enum: ["developer", "orgnization", "company"],
+    default: "developer",
   },
   hostingOption: {
     type: String,
     enum: ["AWS", "GitHub",]
   },
-  companyName: {
-    type: String
-  },
-  developerName: {
-    type: String
-  },
-  orgnizationName: {
-    type: String
-  }
-
-
+ 
 })
 
 export const UserType = mongoose.model("UserType", Schema)
