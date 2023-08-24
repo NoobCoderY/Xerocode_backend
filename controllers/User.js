@@ -74,3 +74,17 @@ export const logout = async (req,res) => {
         message: "Logged Out",
       });
 }
+
+export const getUserInfo = async (req, res, next) => {
+    try {
+        const user = req.user;
+
+        res.status(200).json({
+            user
+        })
+        
+    } catch (error) {
+        return next(new ErrorHandler(error,401))
+        
+    }
+}
