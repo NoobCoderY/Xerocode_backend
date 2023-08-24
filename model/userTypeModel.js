@@ -14,6 +14,9 @@ const Schema = mongoose.Schema({
     type: String,
     enum: ["AWS", "GitHub",]
   },
+  deploy: {
+    type:String
+  }
  
 })
 
