@@ -26,21 +26,20 @@ import ErrorHandler from "../utils/errorHandler.js";
 }
  
 export const updateUserType = async(req,res,next) => {
-    try {
-        const {id, hostingOption, newuserType } = req.body;
-        
-       
+   try {
+        const { id, hostingOption, newuserType } = req.body;
+        console.log(hostingOption,newuserType);
         
         const updateUserType = await UserType.findOneAndUpdate({ userId: id }, {
             $set: {
-               hostingOption: hostingOption,
+             
                 userType: newuserType
             }
         },
             {
                 new:true,      
             })
-        
+    
         res.status(200).json({
             message: "sucessfully updated",
             updateUserType
@@ -65,3 +64,30 @@ export const getUserType = async (req, res, next) => {
         
     }
 }
+
+export const updateUserTypeHosting = async(req,res,next) => {
+    try {
+        const { id, hostingOption } = req.body;
+        console.log(hostingOption);
+        
+        const updateUserType = await UserType.findOneAndUpdate({ userId: id }, {
+            $set: {
+             
+                hostingOption:hostingOption
+            }
+        },
+            {
+                new:true,      
+            })
+    
+        res.status(200).json({
+            message: "sucessfully updated",
+            updateUserType
+        })
+
+    } catch (error) {
+        return next(new ErrorHandler(error,401))
+    }
+}
+
+
