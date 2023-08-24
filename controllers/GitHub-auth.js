@@ -26,9 +26,8 @@ passport.use(
       if (!user) {
         console.log('Adding new github user to DB..');
        const newUser = await User.create({
-          accountId: profile.id,
-          name: profile.displayName,
-            email:profile.emails[0].value
+         accountId: profile.id,
+          name: profile.username,
         });
         userProfile=newUser;
         return cb(null, profile);
