@@ -24,14 +24,17 @@ import ErrorHandler from "../utils/errorHandler.js";
  
 export const updateUserType = async(req,res,next) => {
     try {
-        const { id, hostingOption, newuserType } = req.body;
+        const {id, hostingOption, newuserType,companyName,developerName,orgnizationName } = req.body;
         
        
         
         const updateUserType = await UserType.findOneAndUpdate({ userId: id }, {
             $set: {
-                hostingOption: hostingOption,
-                userType:newuserType
+               hostingOption: hostingOption,
+                userType: newuserType,
+                companyName: companyName,
+                orgnizationName: orgnizationName,
+                developerName:developerName
             }
         },
             {
