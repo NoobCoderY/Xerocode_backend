@@ -53,9 +53,9 @@ router.get(
   // URL Must be same as 'Authorized redirect URIs' field of OAuth client, i.e: /auth/google/callback
   router.get(
     '/callback',
-    passport.authenticate('google', { failureRedirect: '/auth/google/error' }),
+    passport.authenticate('google', { failureRedirect: '/auth/google/error',successRedirect:"http://localhost:3000" }),
     (req, res) => {
-      res.redirect('/auth/google/success'); // Successful authentication, redirect success.
+      res.send("done") // Successful authentication, redirect success.
     }
   );
   
