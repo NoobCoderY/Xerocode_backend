@@ -21,7 +21,13 @@ const app = express();
 
 
 
-
+app.use(
+  cors({
+    credentials: true,
+    origin:'*',  //je bdlna frontend url se
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 app.use(cookieParser());
 
 app.use(express.json());
@@ -40,13 +46,7 @@ app.use(
     }
   })
 );
-app.use(
-  cors({
-    credentials: true,
-    origin:'*',  //je bdlna frontend url se
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+
 
 app.enable("trust proxy");
 
