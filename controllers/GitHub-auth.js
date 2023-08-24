@@ -30,11 +30,11 @@ passport.use(
           name: profile.username,
         });
         userProfile=newUser;
-        return cb(null, profile);
+        return cb(null, newUser);
       } else {
         userProfile=user
         console.log('Github user already exist in DB..');
-        return cb(null, profile);
+        return cb(null, user);
       }
     }
   )
