@@ -1,6 +1,9 @@
 import  jwt  from "jsonwebtoken";
 import { User } from "../model/userModel.js";
 import ErrorHandler from "../utils/errorHandler.js";
+import { redisConnection } from "../config/dbConnection.js";
+
+const client = redisConnection();
 
 export const isAuthenticatedUser= async (req, res, next) => {
    try {
@@ -15,8 +18,9 @@ export const isAuthenticatedUser= async (req, res, next) => {
        {
         const decodedData = jwt.verify(token, process.env.JWT_SECRET);
         req.user = await User.findById(decodedData.user._id);
-        console.log(req.user ,2);
+       const redisToken= (await client).get(decodedData.user.email)
         }
+   
     next();
     
    } catch (error) {
