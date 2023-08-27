@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin:'http://localhost:3000',  //je bdlna frontend url se
+    origin:'https://xerocode-frontend-y247.vercel.app',  //je bdlna frontend url se
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
