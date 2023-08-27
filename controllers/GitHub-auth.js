@@ -44,7 +44,7 @@ router.get('/', passport.authenticate('github', { scope: ['user:email'] }));
 
 router.get(
   '/callback',
-  passport.authenticate('github', { failureRedirect: '/auth/github/error',successRedirect:"http://localhost:3000/userType" }),
+  passport.authenticate('github', { failureRedirect: '/auth/github/error',successRedirect:"https://xerocode-frontend-y247.vercel.app/userType" }),
   function (req, res) {
     res.redirect("done");
   }
